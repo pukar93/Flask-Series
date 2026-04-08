@@ -1,18 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
-def login():
-    return render_template("login.html")
-
-@app.route("/submit", methods=["POST"])
-def submit():
-    username = request.form.get("username")
-    password = request.form.get("passowrd")
-
-    if username == "pukar123" and password == "passw":
-        return render_template("welcome.html", name = username)
-    
-    else:
-        return "Invalid credentials"
+def student_profile():
+    return render_template(
+        "profile.html",
+        name="Arun",
+        is_topper = True,
+        subjects = ["Maths", "Science", "History"]
+    )
